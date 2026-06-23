@@ -26,15 +26,6 @@ def ingest_pdf():
     )
     chunks = splitter.split_documents(docs)
 
-    # Normaliza os metadados (remove chaves com valor None/vazio)
-    # enriched = [
-    #     Document(
-    #         page_content=chunk.page_content,
-    #         metadata={k: v for k, v in chunk.metadata.items() if v not in ("", None)},
-    #     )
-    #     for chunk in chunks
-    # ]
-
     embeddings = OpenAIEmbeddings(
         model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
     )
